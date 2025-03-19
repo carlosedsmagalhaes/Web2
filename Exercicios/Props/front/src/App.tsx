@@ -6,11 +6,12 @@ import FormRandom from './components/Exercicio01'
 import  FormAddRemove from './components/Exercicio02'
 
 function App() {
-
   return (
+    
+
     <>
       <FormRandom />
-      {/* <FormAddRemove /> */}
+      <FormAddRemove />
     </>
 
   )

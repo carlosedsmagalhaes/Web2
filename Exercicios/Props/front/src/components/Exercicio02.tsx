@@ -2,19 +2,23 @@ import { useState, CSSProperties } from 'react'
 import Ball from './ball'
 
 
-interface Props {
-    listaNumeros: number[];
-}
 
-export default function FormAddRemove(props: Props) {
-    return(
+
+export default function FormAddRemove() {
+    const [numero, setNumero] = useState<string>();
+    function handleListaNumeros(){
+        console.log(numero)
+    }
+
+    return (
         <div>
             <div>
-                <div >Exercício 1</div>
-                <input placeholder='Digite a quantidade: '  />
+                <div >Exercício 2</div>
+                <input value={numero} placeholder='Digite a um número: '/>
+                
             </div>
 
-            <Ball numeros={props.listaNumeros} />
+            {/*  <Ball numeros={istaNumeros} /> */}
         </div>
     )
 }
