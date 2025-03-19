@@ -1,24 +1,58 @@
-import { useState, CSSProperties } from 'react'
-import Ball from './ball'
+import { useState } from "react";
+import Ball from "./Ball";
 
+interface Props {
+  titleStyle: React.CSSProperties;
+  inputStyle: React.CSSProperties;
+}
 
+export default function FormAddRemove(props: Props) {
+  const [listaNumeros, setNumeros] = useState<number[]>([]);
+  const [inputValue, setInputValue] = useState("");
 
-
-export default function FormAddRemove() {
-    const [numero, setNumero] = useState<string>();
-    function handleListaNumeros(){
-        console.log(numero)
+  function handleListaNumeros() {
+    const nro = parseInt(inputValue);
+    if (isNaN(nro)) {
+      return;
     }
+    const novaLista = [...listaNumeros, nro];
+    if (novaLista.length > 12) {
+      novaLista.splice(0, 1);
+    }
+    setNumeros(novaLista);
 
-    return (
-        <div>
-            <div>
-                <div >Exercício 2</div>
-                <input value={numero} placeholder='Digite a um número: '/>
-                
-            </div>
+    setInputValue("");
+  }
 
-            {/*  <Ball numeros={istaNumeros} /> */}
-        </div>
-    )
+  function handleRemoveNumero(index: number) {
+    setNumeros(listaNumeros.filter((_, i) => i !== index));
+  }
+
+  function teclasPressionadas(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter" || e.key === "Tab") {
+      e.preventDefault();
+      handleListaNumeros();
+    }
+  }
+
+  return (
+    <div>
+      <div>
+        <div style={props.titleStyle}>Exercício 2</div>
+        <input
+          value={inputValue}
+          placeholder="Digite um número"
+          style={props.inputStyle}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={teclasPressionadas}
+        />
+      </div>
+
+      <Ball
+        numeros={listaNumeros}
+        ballStyle={{ backgroundColor: "#D9415D" }}
+        remove={handleRemoveNumero}
+      />
+    </div>
+  );
 }
