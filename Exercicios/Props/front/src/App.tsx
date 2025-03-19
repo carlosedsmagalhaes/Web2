@@ -2,14 +2,15 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg' */
 import './App.css'
-import Form from './components/Exercicio01'
-import './components/Exercicio02'
+import FormRandom from './components/Exercicio01'
+import  FormAddRemove from './components/Exercicio02'
 
 function App() {
 
   return (
     <>
-      <Form />
+      <FormRandom />
+      {/* <FormAddRemove /> */}
     </>
 
   )
