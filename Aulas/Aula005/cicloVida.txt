@@ -1,0 +1,4 @@
+**Ciclo de vida do componente**
+- Montar => useEffect(() => {}, []);
+- Atualizar => useEffect(() => {}, [nome]);
+- Desmontar => useEffect(() => {return ()=> {}}, []);
